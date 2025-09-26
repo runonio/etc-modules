@@ -10,11 +10,11 @@ repositories {
 dependencies {
     implementation project(path: ':commons')
 
-    implementation 'org.json:json:20250517'
-    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation libs.gson
+    implementation libs.json
+
 
     implementation 'org.apache.pdfbox:pdfbox:2.0.34'
-
     implementation 'org.apache.poi:poi:3.16'
     implementation 'org.apache.poi:poi-ooxml:3.16'
     implementation 'org.apache.poi:poi-scratchpad:3.16'
@@ -27,8 +27,8 @@ dependencies {
 
     implementation fileTree (dir: 'lib', include: ['/**/*.jar'])
 
-    compileOnly 'org.projectlombok:lombok:1.18.42'
-    annotationProcessor 'org.projectlombok:lombok:1.18.42'
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
 }
 
 test {

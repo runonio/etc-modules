@@ -1,0 +1,28 @@
+[versions]
+# 개발은 최신 버전으로 하고 배포시 버전은 따로 파일을 만들어서 관리.
+lombok = "latest.release"
+
+gson = "latest.release"
+json = "latest.release"
+
+# 1.8(jdk 8)에서는 1.2.13 으로 설정할 것
+logbackClassic = "latest.release"
+
+postgresql = "latest.release"
+
+# 1.8(jdk 8)에서는 2.7.18 으로 설정할 것
+springBootStarterWeb = "latest.release"
+
+[libraries]
+# 위에서 정의한 버전을 연결(version.ref)합니다.
+
+lombok =  { module = "org.projectlombok:lombok", version.ref = "lombok" }
+
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+json = { module = "org.json:json", version.ref = "json" }
+
+logbackClassic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassic" }
+
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
+springBootStarterWeb = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBootStarterWeb" }
