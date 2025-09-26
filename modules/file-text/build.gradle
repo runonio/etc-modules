@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':commons')
+
+    implementation 'org.json:json:20250517'
+    implementation 'com.google.code.gson:gson:2.13.2'
+
+    implementation 'org.apache.pdfbox:pdfbox:2.0.34'
+
+    implementation 'org.apache.poi:poi:3.16'
+    implementation 'org.apache.poi:poi-ooxml:3.16'
+    implementation 'org.apache.poi:poi-scratchpad:3.16'
+
+    //1.8 버전에서 돌아야 하기때문에 2.7 버전대를 활용함
+    //noinspection VulnerableLibrariesLocal
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.17'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'ch.qos.logback:logback-classic:1.2.13'
+
+    implementation fileTree (dir: 'lib', include: ['/**/*.jar'])
+
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
+}
+
+test {
+    useJUnitPlatform()
+}

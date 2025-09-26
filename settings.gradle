@@ -1,0 +1,15 @@
+rootProject.name = 'etc-modules'
+
+include 'outputs'
+project(':outputs').projectDir = new File(settingsDir, '../../runon/etc-modules/modules/outputs')
+include 'file-text'
+project(':file-text').projectDir = new File(settingsDir, '../../runon/etc-modules/modules/file-text')
+include 'poi'
+project(':poi').projectDir = new File(settingsDir, '../../runon/etc-modules/modules/poi')
+
+include 'commons'
+project(':commons').projectDir = new File(settingsDir, '../../runon/commons/modules/commons')
+include 'jdbc'
+project(':jdbc').projectDir = new File(settingsDir, '../../runon/commons/modules/jdbc')
+include 'collect'
+project(':collect').projectDir = new File(settingsDir, '../../runon/commons/modules/collect')
