@@ -1,6 +1,6 @@
 package io.runon.file.text;
 
-import io.runon.commons.utils.ExceptionUtil;
+import io.runon.commons.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -46,7 +46,7 @@ public class OcrPythonShell {
                 }
 
             } catch (Exception e) {
-                log.error(ExceptionUtil.getStackTrace(e));
+                log.error(ExceptionUtils.getStackTrace(e));
             } finally {
                 isAnalysis.set(true);
             }
@@ -63,7 +63,7 @@ public class OcrPythonShell {
                 }
 
             } catch (Exception e) {
-                log.error(ExceptionUtil.getStackTrace(e));
+                log.error(ExceptionUtils.getStackTrace(e));
             }
 
             isAnalysis.set(true);

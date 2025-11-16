@@ -1,7 +1,7 @@
 package io.runon.commons.outputs;
 
-import io.runon.commons.utils.ExceptionUtil;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.ExceptionUtils;
+import io.runon.commons.utils.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -27,7 +27,7 @@ public class OutDirFileInfoToExcel {
 
     public void out(String dirPath, String outPath) {
 
-        List<File> fileList = FileUtil.getFileList(dirPath);
+        List<File> fileList = FileUtils.getFileList(dirPath);
         File [] files = fileList.toArray(new File[0]);
         fileList.clear();
 
@@ -79,7 +79,7 @@ public class OutDirFileInfoToExcel {
                 cell.setCellValue(file.getName());
 
                 cell = row.createCell(4);
-                cell.setCellValue(FileUtil.getExtension(file.getName()));
+                cell.setCellValue(FileUtils.getExtension(file.getName()));
 
                 rowIndex++;
             }
@@ -91,7 +91,7 @@ public class OutDirFileInfoToExcel {
             ExcelUtils.write(workbook, outPath);
 
         }catch (Exception e){
-            log.error(ExceptionUtil.getStackTrace(e));
+            log.error(ExceptionUtils.getStackTrace(e));
         }
 
     }

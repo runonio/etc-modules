@@ -1,7 +1,7 @@
 package io.runon.file.text;
 
 import io.runon.commons.config.Config;
-import io.runon.commons.utils.ExceptionUtil;
+import io.runon.commons.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -46,7 +46,7 @@ public class FileTextApiStarter {
                     .properties(props)
                     .run(springbootArgs);
         }catch(Exception e){
-            log.error(ExceptionUtil.getStackTrace(e));
+            log.error(ExceptionUtils.getStackTrace(e));
         }
 
     }

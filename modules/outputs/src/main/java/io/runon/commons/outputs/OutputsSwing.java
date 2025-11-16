@@ -1,6 +1,6 @@
 package io.runon.commons.outputs;
 
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.FileUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,15 +85,15 @@ public class OutputsSwing {
         button.addActionListener(e -> {
             OutDirFileInfoToExcel outDirFileInfoToExcel = new OutDirFileInfoToExcel();
             String outPath = outDirField.getText()+ "/src_files." + extensionField.getText().trim();
-            if(FileUtil.isFile(outPath)){
-                outPath = FileUtil.makeName(new File(outPath));
+            if(FileUtils.isFile(outPath)){
+                outPath = FileUtils.makeName(new File(outPath));
             }
             outDirFileInfoToExcel.out(srcDirField.getText(), outPath);
 
             OutProgramTableMapToExcel outProgramTableMapToExcel = new OutProgramTableMapToExcel();
             outPath = outDirField.getText()+ "/src_programs." +  extensionField.getText().trim();
-            if(FileUtil.isFile(outPath)){
-                outPath = FileUtil.makeName(new File(outPath));
+            if(FileUtils.isFile(outPath)){
+                outPath = FileUtils.makeName(new File(outPath));
             }
             outProgramTableMapToExcel.out(srcDirField.getText(), outPath);
 

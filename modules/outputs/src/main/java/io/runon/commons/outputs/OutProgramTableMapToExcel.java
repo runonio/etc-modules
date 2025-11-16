@@ -1,7 +1,7 @@
 package io.runon.commons.outputs;
 
-import io.runon.commons.utils.ExceptionUtil;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.ExceptionUtils;
+import io.runon.commons.utils.FileUtils;
 import io.runon.commons.utils.string.Change;
 import io.runon.commons.utils.string.Check;
 import io.runon.commons.utils.string.Remove;
@@ -52,7 +52,7 @@ public class OutProgramTableMapToExcel {
 
         javaDirPath = srcPath+dirSeparator +"main" + dirSeparator + "java";
 
-        List<File> fileList = FileUtil.getFileList(javaDirPath);
+        List<File> fileList = FileUtils.getFileList(javaDirPath);
         List<File> serviceFileList = new ArrayList<>();
 
         for(File file : fileList){
@@ -82,11 +82,11 @@ public class OutProgramTableMapToExcel {
 
         resDirPath = srcPath+dirSeparator +"main" + dirSeparator + "resources";
 
-        List<File> xmlList = FileUtil.getFileList(resDirPath,"xml");
+        List<File> xmlList = FileUtils.getFileList(resDirPath,"xml");
 
         Map<String, File > mapperMap = new HashMap<>();
         for(File xml : xmlList){
-            String fileText = FileUtil.getFileContents(xml, "UTF-8");
+            String fileText = FileUtils.getFileContents(xml, "UTF-8");
             Document dom = Jsoup.parse(fileText);
             Elements itemElements = dom.getElementsByTag("mapper");
             if(itemElements == null || itemElements.size() == 0){
@@ -152,7 +152,7 @@ public class OutProgramTableMapToExcel {
                 }else{
                     boolean isRow = false;
 
-                    String fileText = FileUtil.getFileContents(xmlFile, "UTF-8");
+                    String fileText = FileUtils.getFileContents(xmlFile, "UTF-8");
                     Document dom = Jsoup.parse(fileText);
                     Elements itemElements  = dom.getElementsByTag("insert");
                     LinkedHashSet<String> tableNames = new LinkedHashSet<>();
@@ -268,7 +268,7 @@ public class OutProgramTableMapToExcel {
             ExcelUtils.write(workbook, outPath);
 
         }catch (Exception e){
-            log.error(ExceptionUtil.getStackTrace(e));
+            log.error(ExceptionUtils.getStackTrace(e));
         }
     }
 

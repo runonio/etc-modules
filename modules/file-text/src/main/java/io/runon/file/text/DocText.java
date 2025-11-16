@@ -2,7 +2,7 @@ package io.runon.file.text;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.FileUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.hwpf.usermodel.Paragraph;
@@ -23,7 +23,7 @@ public class DocText {
 
     public static String getSimpleText(String filePath){
         File file = new File(filePath);
-        String extension = FileUtil.getExtension(file).toLowerCase();
+        String extension = FileUtils.getExtension(file).toLowerCase();
 
         return getSimpleText(filePath, extension);
     }

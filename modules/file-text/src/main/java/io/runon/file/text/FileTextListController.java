@@ -3,8 +3,8 @@ package io.runon.file.text;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import io.runon.commons.config.Config;
-import io.runon.commons.utils.ExceptionUtil;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.ExceptionUtils;
+import io.runon.commons.utils.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -28,7 +28,7 @@ public class FileTextListController {
         InputStream inputStream = null;
         try {
             String originalName = file.getOriginalFilename();
-            String extension = FileUtil.getExtension(originalName).toLowerCase();
+            String extension = FileUtils.getExtension(originalName).toLowerCase();
 
 
             String homeDir = Config.getConfig("home.dir");
@@ -69,7 +69,7 @@ public class FileTextListController {
         } catch (Exception e) {
             JsonObject response = new JsonObject();
             response.addProperty("code", "-1");
-            response.addProperty("error_message", ExceptionUtil.getStackTrace(e));
+            response.addProperty("error_message", ExceptionUtils.getStackTrace(e));
             return FileTextController.gson.toJson(response);
         } finally {
             try {
@@ -89,7 +89,7 @@ public class FileTextListController {
         try {
             JSONObject object = new JSONObject(jsonValue);
             String originalName = object.getString("file_name");
-            String extension = FileUtil.getExtension(originalName).toLowerCase();
+            String extension = FileUtils.getExtension(originalName).toLowerCase();
 
             String homeDir = Config.getConfig("home.dir");
             String tempDirPath = homeDir +"/temp/";
@@ -118,7 +118,7 @@ public class FileTextListController {
         }catch (Exception e){
             JsonObject response = new JsonObject();
             response.addProperty("code", "-1");
-            response.addProperty("error_message", ExceptionUtil.getStackTrace(e));
+            response.addProperty("error_message", ExceptionUtils.getStackTrace(e));
             return FileTextController.gson.toJson(response);
         }finally {
             try{fos.close();}catch (Exception ignore){}

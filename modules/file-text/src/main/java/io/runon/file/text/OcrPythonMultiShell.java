@@ -1,7 +1,7 @@
 package io.runon.file.text;
 
 import com.google.gson.JsonArray;
-import io.runon.commons.utils.ExceptionUtil;
+import io.runon.commons.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 
@@ -51,7 +51,7 @@ public class OcrPythonMultiShell {
                 }catch (Exception e){
                     synchronized (lock){
 
-                        errorMessage = ExceptionUtil.getStackTrace(e);
+                        errorMessage = ExceptionUtils.getStackTrace(e);
                         completeCount++;
                     }
                 }
@@ -90,7 +90,7 @@ public class OcrPythonMultiShell {
                 }
 
             }catch (Exception e){
-                errorMessage = ExceptionUtil.getStackTrace(e);
+                errorMessage = ExceptionUtils.getStackTrace(e);
             }
             completeCount++;
 

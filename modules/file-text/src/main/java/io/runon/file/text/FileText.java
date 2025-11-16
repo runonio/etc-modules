@@ -3,7 +3,7 @@ package io.runon.file.text;
 import com.argo.hwp.HwpTextExtractor;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.FileUtils;
 import io.runon.commons.utils.GsonUtils;
 import io.runon.commons.utils.string.Strings;
 
@@ -19,15 +19,15 @@ public class FileText {
     @SuppressWarnings({"ResultOfMethodCallIgnored", "IfCanBeSwitch"})
     public static String getTextSimple(String homeDir , String filePath, boolean isDelete){
 
-        if (!FileUtil.isFile(filePath)) {
+        if (!FileUtils.isFile(filePath)) {
             throw new RuntimeException("file no search: " + filePath);
         }
 
         File file = new File(filePath);
-        String extension = FileUtil.getExtension(file).toLowerCase();
+        String extension = FileUtils.getExtension(file).toLowerCase();
 
         if(extension.equals("txt") || extension.equals("csv")){
-            String content =  FileUtil.getFileContents(filePath);
+            String content =  FileUtils.getFileContents(filePath);
             if(isDelete){
                 file.delete();
             }
@@ -109,17 +109,17 @@ public class FileText {
 
     public static JsonArray getPageArray(String homeDir , String filePath, boolean isDelete){
 
-        if (!FileUtil.isFile(filePath)) {
+        if (!FileUtils.isFile(filePath)) {
             throw new RuntimeException("file no search: " + filePath);
         }
 
         File file = new File(filePath);
-        String extension = FileUtil.getExtension(file).toLowerCase();
+        String extension = FileUtils.getExtension(file).toLowerCase();
 
 
 
         if(extension.equals("txt") || extension.equals("csv")){
-            String content =  FileUtil.getFileContents(filePath);
+            String content =  FileUtils.getFileContents(filePath);
             if(isDelete){
                 file.delete();
             }

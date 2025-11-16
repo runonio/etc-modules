@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import io.runon.commons.config.Config;
-import io.runon.commons.utils.ExceptionUtil;
-import io.runon.commons.utils.FileUtil;
+import io.runon.commons.utils.ExceptionUtils;
+import io.runon.commons.utils.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
@@ -56,7 +56,7 @@ public class FileTextController {
         InputStream inputStream = null;
         try{
             String originalName = file.getOriginalFilename();
-            String extension = FileUtil.getExtension(originalName).toLowerCase();
+            String extension = FileUtils.getExtension(originalName).toLowerCase();
 
 
             String homeDir = Config.getConfig("home.dir");
@@ -89,7 +89,7 @@ public class FileTextController {
         }catch (Exception e){
             JsonObject response = new JsonObject();
             response.addProperty("code", "-1");
-            response.addProperty("error_message", ExceptionUtil.getStackTrace(e));
+            response.addProperty("error_message", ExceptionUtils.getStackTrace(e));
             return gson.toJson(response);
         }finally {
             try{outStream.close();}catch (Exception ignore){}
@@ -102,7 +102,7 @@ public class FileTextController {
         try {
             JSONObject object = new JSONObject(jsonValue);
             String originalName = object.getString("file_name");
-            String extension = FileUtil.getExtension(originalName).toLowerCase();
+            String extension = FileUtils.getExtension(originalName).toLowerCase();
 
             String homeDir = Config.getConfig("home.dir");
             String tempDirPath = homeDir +"/temp/";
@@ -131,7 +131,7 @@ public class FileTextController {
         }catch (Exception e){
             JsonObject response = new JsonObject();
             response.addProperty("code", "-1");
-            response.addProperty("error_message", ExceptionUtil.getStackTrace(e));
+            response.addProperty("error_message", ExceptionUtils.getStackTrace(e));
             return gson.toJson(response);
         }finally {
             try{fos.close();}catch (Exception ignore){}
@@ -184,7 +184,7 @@ public class FileTextController {
         }catch (Exception e){
             JSONObject response = new JSONObject();
             response.put("code", "-1");
-            response.put("message", ExceptionUtil.getStackTrace(e));
+            response.put("message", ExceptionUtils.getStackTrace(e));
             return response.toString();
         }finally {
             try{fos.close();}catch (Exception ignore){}
@@ -238,7 +238,7 @@ public class FileTextController {
         }catch (Exception e){
             JSONObject response = new JSONObject();
             response.put("code", "-1");
-            response.put("error_message", ExceptionUtil.getStackTrace(e));
+            response.put("error_message", ExceptionUtils.getStackTrace(e));
             return response.toString();
 
         }finally {

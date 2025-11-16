@@ -1,5 +1,5 @@
-import io.runon.commons.utils.FileUtil;
 import io.runon.commons.outputs.OutProgramTableMapToExcel;
+import io.runon.commons.utils.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,7 +13,7 @@ import java.io.File;
 public class XmpFileSearch {
     public static void main(String[] args) {
 
-        String text = FileUtil.getFileContents(new File("DspcBas_SqlMapper.xml"),"UTF-8");
+        String text = FileUtils.getFileContents(new File("DspcBas_SqlMapper.xml"),"UTF-8");
         Document dom = Jsoup.parse(text);
 
 
